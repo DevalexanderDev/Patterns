@@ -12,9 +12,13 @@ class Invoker:
         self._commands[buttonId] = command
 
     def print(self):
-        for command_key in self._commands:
-            print("key - " + command_key + " " + self._commands[command_key].print())
+        for command_key in self._commands.keys():
+            print(command_key + " " + self._commands[command_key].print())
 
     def executeCommand(self, buttonId):
         if buttonId in self._commands.keys():
             self._commands[buttonId].execute()
+
+    def undoCommand(self, buttonId):
+        if buttonId in self._commands.keys():
+            self._commands[buttonId].undo()
